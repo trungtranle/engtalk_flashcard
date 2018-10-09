@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<div class="container">
+    {% if saved %}
+    <div class = "alert alert-success">Word saved</div>
+    <a href="{% url 'index' %}" class="btn btn-primary">Return</a>
+    
+    {% else %} 
+    <form action="" method="POST">
+    {{form.as_ul}}
+    {% csrf_token %}
+    <input type="submit" value="Submit">
+    </form>
+    {% endif %}
+</div>
+
+{% endblock %}
