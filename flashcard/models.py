@@ -11,3 +11,6 @@ class Word(models.Model):
 
     class Meta:
         ordering = ('-added',)
+	
+    def __str__(self):
+        return self.word
