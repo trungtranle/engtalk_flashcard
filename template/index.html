@@ -8,4 +8,11 @@
         <div class="col-sm-6 p-3"><a href="{% url 'list' %}" class="btn btn-primary">See word list</a></div>
     </div>
 </div>
+
+<div class="container text-center">
+    <h4>Random Word</h4>
+    <h5>{{word.word}} </h5> <span><em>{{word.part_of_speech}}</em>
+    <p>{{word.definition}} </span></p>
+    <p>{{word.example}}</p>
+</div>
 {% endblock %}

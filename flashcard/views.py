@@ -1,9 +1,16 @@
 from django.shortcuts import render
 from flashcard.forms import WordForm
 from flashcard.models import Word
+from random import randint
 # Create your views here.
+
+
 def index(request):
-    return render(request, 'index.html')
+    count = Word.objects.count()
+    id_ = randint(1, count-1)
+    word = Word.objects.get(pk = id_)
+ 
+    return render(request, 'index.html', {"word":word})
 
 def add_word(request):
     saved = False
@@ -24,3 +31,4 @@ def list_word(request):
     word_list = Word.objects.all()
 
     return render(request, 'list.html', {'word_list':word_list})
+
