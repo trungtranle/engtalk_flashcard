@@ -1,6 +1,6 @@
 from django.shortcuts import render
-from flashcard.forms import WordForm
-from flashcard.models import Word
+from flashcard.forms import WordForm, WritingForm
+from flashcard.models import Word, Writing_question
 from random import randint
 # Create your views here.
 
@@ -31,4 +31,23 @@ def list_word(request):
     word_list = Word.objects.all()
 
     return render(request, 'list.html', {'word_list':word_list})
+
+
+
+def writing(request, pk = None):
+    question = Writing_question.objects.get(pk = pk)
+    saved = False
+    if request.method == "POST":
+        form = WritingForm(data = request.POST)
+        if form.is_valid():
+            form.save()
+            saved = True
+    else:
+        form = WritingForm(initial={'question':pk})
+    return render(
+        request, 
+        'writing.html',
+        {'form':form,
+        'saved':saved,
+        'question':question})
 

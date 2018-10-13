@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            <p style="font-weight:bold">Writing Task {{question.task}}</p>
+            <p>{{question.question|safe}}</p>
+        </div>
+        <div class="col-sm-12 col-md-6">
+            <img src="{{question.picture.url}}" alt="" width="80%">
+        </div>
+        <div class="col-sm-12 col-md-6">
+            <form action="" method="post">
+                {{form.as_p}}
+
+                {% csrf_token %}
+                Words: <span id="wordCount">0</span><br />
+                <input type="submit" value="Submit" class="btn btn-primary">
+
+            </form>
+        </div>
+    </div>
+
+</div>
+{% endblock %}
