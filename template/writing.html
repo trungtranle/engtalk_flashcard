@@ -2,6 +2,10 @@
 
 {% block body %}
 <div class="container">
+	{% if saved %}
+	<h3> Saved </h3>
+{% else %}
+
     <div class="row">
         <div class="col-sm-12">
             <p style="font-weight:bold">Writing Task {{question.task}}</p>
@@ -21,6 +25,6 @@
             </form>
         </div>
     </div>
-
+{% endif %}
 </div>
 {% endblock %}

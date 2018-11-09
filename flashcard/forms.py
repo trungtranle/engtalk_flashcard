@@ -9,7 +9,6 @@ class WordForm(forms.ModelForm):
         fields = "__all__"
 
 class WritingForm(forms.ModelForm):
-    question = forms.CharField(widget = forms.HiddenInput())
     class Meta:
         model = Writing
         fields = "__all__"

@@ -35,15 +35,15 @@ def list_word(request):
 
 
 def writing(request, pk = None):
-    question = Writing_question.objects.get(pk = pk)
+    question = Writing_question.objects.get(pk = 1)
     saved = False
     if request.method == "POST":
-        form = WritingForm(data = request.POST)
+        form = WritingForm(data = request.POST or None, initial = {'question':question})
         if form.is_valid():
             form.save()
             saved = True
     else:
-        form = WritingForm(initial={'question':pk})
+        form = WritingForm(initial = {'question':question})
     return render(
         request, 
         'writing.html',

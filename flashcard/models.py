@@ -20,11 +20,11 @@ class Writing_question(models.Model):
     picture = models.ImageField(upload_to = 'img/')
     added = models.DateTimeField(auto_now_add=True)
 
-    def __str__(self):
-        return self.added.strftime("%Y-%m-%d")
+  
 class Writing(models.Model):
     user = models.CharField(max_length = 40)
     question = models.ForeignKey(Writing_question, on_delete = models.PROTECT)
+    #question = models.CharField(max_length = 10)
     essay = models.TextField()
     added = models.DateTimeField(auto_now_add= True)
 
