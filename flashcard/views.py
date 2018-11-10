@@ -35,7 +35,7 @@ def list_word(request):
 
 
 def writing(request, pk = None):
-    question = Writing_question.objects.get(pk = 1)
+    question = Writing_question.objects.get(pk = pk)
     saved = False
     if request.method == "POST":
         form = WritingForm(data = request.POST or None, initial = {'question':question})
